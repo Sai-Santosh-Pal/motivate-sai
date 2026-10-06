@@ -1,3 +1,7 @@
+const my_hackatime = fetch('https://https:hackatime.hackclub.com/api/v1/users/sai-santosh-pal/stats?start_date=2026-08-06&end_date=&features=&filter_by_project=&filter_by_category=&boundary_aware=true&total_seconds=true&no_ai_coding=true&test_param=true')
+console.log(my_hackatime)
+
+
 const clicker = document.getElementById('clicker')
 const shadow1 = document.getElementById('shadow1')
 const shadow2 = document.getElementById('shadow2')
