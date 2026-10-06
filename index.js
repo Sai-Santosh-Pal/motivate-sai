@@ -1,5 +1,5 @@
-const my_hackatime = fetch('https://https:hackatime.hackclub.com/api/v1/users/sai-santosh-pal/stats?start_date=2026-08-06&end_date=&features=&filter_by_project=&filter_by_category=&boundary_aware=true&total_seconds=true&no_ai_coding=true&test_param=true')
-console.log(my_hackatime)
+// const my_hackatime = fetch('https://https:hackatime.hackclub.com/api/v1/users/sai-santosh-pal/stats?start_date=2026-08-06&end_date=&features=&filter_by_project=&filter_by_category=&boundary_aware=true&total_seconds=true&no_ai_coding=true&test_param=true')
+// console.log(my_hackatime)
 
 
 const clicker = document.getElementById('clicker')
@@ -23,6 +23,14 @@ clicker.addEventListener('click', () => {
 
     shadow4.classList.remove('mb-[-150px]')
     shadow4.classList.add('mb-[-180px]')
+
+    async function countUpdate() {
+        const count = await fetch('https://counter.sai-santosh-pal.hackclub.app/1')
+        const number = await count.text()
+        const counter = document.getElementById('count')
+        counter.innerText = 'so far this button has been clicked ' + number + ' times'
+    }
+    countUpdate()
     setTimeout(() => {
     shadow1.classList.remove('mb-[-180px]')
     shadow1.classList.add('mb-[-150px]')
