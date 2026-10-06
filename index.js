@@ -1,5 +1,31 @@
-// const my_hackatime = fetch('https://https:hackatime.hackclub.com/api/v1/users/sai-santosh-pal/stats?start_date=2026-08-06&end_date=&features=&filter_by_project=&filter_by_category=&boundary_aware=true&total_seconds=true&no_ai_coding=true&test_param=true')
-// console.log(my_hackatime)
+async function setCounter() {
+        const count = await fetch('https://counter.sai-santosh-pal.hackclub.app/')
+        const number = await count.text()
+        const counter = document.getElementById('count')
+        counter.innerText = 'so far this button has been clicked ' + number + ' times'
+    }
+setCounter()
+
+async function get_progress() {
+    const data = await fetch('https://hackatime.hackclub.com/api/v1/users/sai-santosh-pal/stats?start_date=2026-08-06&features=&filter_by_project=&filter_by_category=&boundary_aware=true&total_seconds=true&no_ai_coding=true&test_param=true')
+    // console.log(time)
+    // console.log(dataObj)
+    const dataObj = await data.json()
+    // console.log(dataObj)
+    const time = await (Number(dataObj["total_seconds"]) / 3600)
+    const timeDone = time - 4 // -4 for my other projects which arent shipd to phantom
+    const percentage = await (timeDone / 180) * 100
+    console.log(percentage)
+    const progbar = await document.getElementById("progress")
+    const className = await "w-[" + Math.round((percentage*10)/10) + "%]"
+    setTimeout(() => {
+    progbar.classList.add(className)
+    }, 200)
+    const progtext = await document.getElementById("progtext")
+    progtext.innerText = await Math.round(timeDone*10)/10 + " hours / 180 hours"
+}
+
+get_progress()
 
 
 const clicker = document.getElementById('clicker')
