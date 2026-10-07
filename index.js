@@ -82,6 +82,9 @@ clicker.addEventListener('click', () => {
 
 })
 
+var senderName = ""
+var message = ""
+
 function moreoptions() {
     const form = document.getElementById('form')
     form.classList.remove("h-[0px]")
@@ -92,4 +95,18 @@ function moreoptions() {
     form.classList.add("flex")
     // form.classList.add("mb-5")
     // form.classList.add("mt-2")
+}
+
+document.getElementById("form").addEventListener("submit", function(e) {
+    e.preventDefault()
+    const name = document.getElementById("name").value
+    const msg = document.getElementById("msg").value
+    senderName = name
+    message = msg
+    notify()
+})
+
+function notify() {
+    alert(senderName + message)
+
 }
