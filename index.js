@@ -33,6 +33,8 @@ async function get_progress() {
 get_progress()
 
 
+var senderName = "Remind Sai"
+var message = "Code Sai Code! you must come to phantom <3"
 
 const clicker = document.getElementById('clicker')
 const shadow1 = document.getElementById('shadow1')
@@ -79,11 +81,9 @@ clicker.addEventListener('click', () => {
     shadow4.classList.remove('mb-[-180px]')
     shadow4.classList.add('mb-[-150px]')
     }, 200)
-
+    notify(senderName, message)
 })
 
-var senderName = ""
-var message = ""
 
 function moreoptions() {
     const form = document.getElementById('form')
@@ -103,10 +103,38 @@ document.getElementById("form").addEventListener("submit", function(e) {
     const msg = document.getElementById("msg").value
     senderName = name
     message = msg
-    notify()
+    alert('your details are now updated!!')
 })
 
-function notify() {
-    alert(senderName + message)
+function notify(name, msg) {
+    console.log(name + msg + "sending")
+    webhookURl = "https://discord.com/api/webhooks/1557323258766819398/3_lOh2QWNYJX2xEVP3-iGCtghDcJ1LCSnBWsLauBmoT5SiEFTCxxxbdwnVMkWwR55okT"
+    async function send() {
+        const text = {
+            username: "Code Sai Code!",
+            avatar_url: "https://avatars.slack-edge.com/2025-11-01/9824931289556_ea679b58cdb3c18ac186_192.jpg",
+            content: "Reminder from **" + name + '** - "' + msg +'"'
+        }
+        try {
+            const response =  await fetch(webhookURl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(text)
+            })
+            if (response.ok) {
+                console.log('sent')
+            }
+            else {
+                console.log('error ' + response.statusText)
+            }
+        } catch (error) {
+            console.log(error)
+        }
 
+    }
+    send()
 }
+
+
