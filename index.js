@@ -23,6 +23,11 @@ async function get_progress() {
     }, 200)
     const progtext = await document.getElementById("progtext")
     progtext.innerText = await Math.round(timeDone*10)/10 + " hours / 180 hours"
+    const today = new Date()
+    const lastDate = new Date("2026-12-31")
+    const timeLeft = Math.ceil((lastDate-today) / (1000*60*60*24))
+    const timetext = document.getElementById("timeleft")
+    timetext.innerText =  timeLeft + " days left"
 }
 
 get_progress()
