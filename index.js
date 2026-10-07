@@ -33,6 +33,7 @@ async function get_progress() {
 get_progress()
 
 
+
 const clicker = document.getElementById('clicker')
 const shadow1 = document.getElementById('shadow1')
 const shadow2 = document.getElementById('shadow2')
@@ -79,6 +80,16 @@ clicker.addEventListener('click', () => {
     shadow4.classList.add('mb-[-150px]')
     }, 200)
 
-    
 })
 
+function moreoptions() {
+    const form = document.getElementById('form')
+    form.classList.remove("h-[0px]")
+    form.classList.remove("opacity-0")
+    form.classList.add("opacity-100")
+    form.classList.add("h-[200px]")
+    // form.classList.add("items-center")
+    form.classList.add("flex")
+    // form.classList.add("mb-5")
+    // form.classList.add("mt-2")
+}
