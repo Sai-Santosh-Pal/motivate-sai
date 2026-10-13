@@ -13,7 +13,7 @@ async function get_progress() {
     const dataObj = await data.json()
     // console.log(dataObj)
     const time = await (Number(dataObj["total_seconds"]) / 3600)
-    const timeDone = time - 4 // -4 for my other projects which arent shipd to phantom
+    const timeDone = time - 4.5 // -4 for my other projects which arent shipd to phantom - edit added another .5 for my recent submission to boba bash pre-event project submission
     const percentage = await (timeDone / 180) * 100
     console.log(percentage)
     const progbar = await document.getElementById("progress")
